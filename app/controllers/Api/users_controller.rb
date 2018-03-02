@@ -11,6 +11,7 @@ class Api::UsersController < ApplicationController
   end
 
   def show
+    debugger
     @user = User.find(params[:id])
     render :show
   end
@@ -29,6 +30,6 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :password, :about, :userpic, :email)
+    params.require(:user).permit(:username, :password)
   end
 end

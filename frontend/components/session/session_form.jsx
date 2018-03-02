@@ -7,24 +7,32 @@ class SessionForm extends React.Component {
     super(props);
 
     this.state = {
-      username: '',
-      password: '',
-      email: '',
+      "username": '',
+      "password": '',
+      // "email": '',
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+    this.demoSubmit = this.demoSubmit.bind(this);
   }
 
   handleSubmit(e){
     e.preventDefault();
+    debugger
+    let user = this.state;
+    this.props.login({user});
+  }
+
+  demoSubmit(){
+    let user = { user: {password: 'password', username: 'test', email: 'email@mail.com'}};
+    this.props.login(user);
   }
 
   update(e){
-    debugger
-    return e => this.setState({
-      [`${e.target.name}`]: e.target.value
-    }).bind(this);
+    this.setState({
+      [e.currentTarget.name]: e.currentTarget.value
+    });
   }
 
   render(){
@@ -43,8 +51,9 @@ class SessionForm extends React.Component {
                     value={this.state.password}
                     onChange={this.update}
              />
-          <input type="submit" value={this.props} className="submit-button" />
+           <input type="submit" value="Login" className="submit-button" />
         </form>
+        <button type="submit" value="demo" onClick={this.demoSubmit}>demo</button>
       </div>
     )
   }
