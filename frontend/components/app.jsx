@@ -2,10 +2,7 @@ import React from 'react';
 import { Route, Redirect, Switch, Link, HashRouter } from 'react-router-dom';
 import SessionFormContainer from './session/session_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-
-
-
-
+import MainContainer from './greeting/main_container';
 
 
 const App = () => (
@@ -15,7 +12,7 @@ const App = () => (
     </header>
     <Switch>
       <AuthRoute path="/login" component={SessionFormContainer} />
-      // <AuthRoute path="/signup" component={SessionFormContainer} />
+      <Route exact path="/" component={MainContainer} />
 
     </Switch>
   </div>

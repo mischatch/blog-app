@@ -15,11 +15,11 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.demoSubmit = this.demoSubmit.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   handleSubmit(e){
     e.preventDefault();
-    debugger
     let user = this.state;
     this.props.login({user});
   }
@@ -33,6 +33,18 @@ class SessionForm extends React.Component {
     this.setState({
       [e.currentTarget.name]: e.currentTarget.value
     });
+  }
+
+  renderErrors(){
+    return (
+      <ul>
+      { this.props.errors.map((err, i) => (
+        <li key={i}>
+          {err}
+        </li>
+      ))}
+    </ul>
+    )
   }
 
   render(){
@@ -54,6 +66,7 @@ class SessionForm extends React.Component {
            <input type="submit" value="Login" className="submit-button" />
         </form>
         <button type="submit" value="demo" onClick={this.demoSubmit}>demo</button>
+          {this.renderErrors}
       </div>
     )
   }
