@@ -5,7 +5,6 @@ import { login, logout, signup, clearErrors } from '../../actions/session_action
 
 
 const mapStateToProps = state => {
-  debugger
   return {
     currentUser: state.session.currentUser,
   };

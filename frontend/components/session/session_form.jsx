@@ -18,6 +18,10 @@ class SessionForm extends React.Component {
     this.renderErrors = this.renderErrors.bind(this);
   }
 
+  componentDidMount(){
+    this.props.clearErrors();
+  }
+
   handleSubmit(e){
     e.preventDefault();
     let user = this.state;
@@ -36,7 +40,6 @@ class SessionForm extends React.Component {
   }
 
   renderErrors(){
-    debugger
     return (
       <ul>
       { this.props.errors.map((err, i) => (
