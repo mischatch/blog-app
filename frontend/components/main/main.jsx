@@ -3,7 +3,7 @@ import React from 'react';
 const Main = () => {
   return (
     <div>
-      main component
+      there will be 4 links to main divisions
     </div>
   )
 };
